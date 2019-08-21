@@ -141,3 +141,68 @@ console.log(archer.language); // Elvish
 console.log(archer.greet()); // Lilith offers a greeting in Elvish.
 console.log(mage.takeDamage()); // Bruce took damage.
 console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+
+// ----------------------------------------------------------------------------------------------
+
+// Stretch task:
+
+// * Create Villain and Hero constructor functions
+
+// * These two will inherit from the Humanoid constructor function.  
+
+// * Give the Hero and Villains different methods that could be used to remove health points 
+//    from objects which could result in destruction if health gets to 0 or drops below 0;
+
+// * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+// ----------------------------------------------------------------------------------------------
+
+let Hero = function(humanoidAttributes) {
+  Humanoid.call(this, humanoidAttributes);
+  this.good = humanoidAttributes.good;
+};
+
+Hero.prototype = Object.create(Humanoid.prototype);
+
+let Villain = function(humanoidAttributes) {
+  Humanoid.call(this, humanoidAttributes);
+  this.bad = humanoidAttributes.bad;
+};
+
+Villain.prototype = Object.create(Humanoid.prototype);
+
+const hero = new Hero({
+  createdAt: new Date(),
+  dimensions: {
+    length: 3,
+    width: 3,
+    height: 3,
+  },
+  healthPoints: 10,
+  name: 'King George',
+  team: 'The Round Table',
+  weapons: [
+    'Sword',
+    'Dagger',
+  ],
+  language: 'Royal Tongue',
+});
+
+const villian = new Villain({
+  createdAt: new Date(),
+  dimensions: {
+    length: 2,
+    width: 3,
+    height: 4,
+  },
+  healthPoints: 15,
+  name: 'The Destroyer of Worlds',
+  team: 'The Exhild',
+  weapons: [
+    'Wand',
+  ],
+  language: [
+    'Royal Tongue',
+    'Common Tongue',
+  ],
+});
